@@ -21,7 +21,7 @@ Pkg.instantiate()
 ## Problem 1.1
 ```julia
 function square_number(x)
-    output = x^2
+    output = x.^2
     return output
 end
 ```
@@ -39,6 +39,7 @@ plot(x, y, xlabel="x", ylabel="y = x^2", legend=false)
 # Problem 2
 
 ## Problem 2.1
+
 
 ## Problem 2.2
 
