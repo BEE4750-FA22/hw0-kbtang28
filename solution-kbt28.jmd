@@ -39,9 +39,24 @@ plot(x, y, xlabel="x", ylabel="y = x^2", legend=false)
 # Problem 2
 
 ## Problem 2.1
-
+If $a\leq\sqrt{x},$ then $x/a \geq x/\sqrt{x} = \sqrt{x}.$ If $a > \sqrt{x},$ then $x/a < x/\sqrt{x} = \sqrt{x}.$ 
+In both cases, $a \leq \sqrt{x} \leq x/a.$
 
 ## Problem 2.2
+```julia
+function newton_sqrt(x, err_tol)
+    a = x
+
+    while true
+        root = 0.5 * (a + (x/a))
+        if abs(root - a) < err_tol
+            return root
+        end
+        a = root
+    end
+end
+```
+Using this method and an error tolerance of $10^{-8}$ gives $\sqrt{2}\approx$ `j newton_sqrt(2, 1e-8)`.
 
 # Problem 3
 
