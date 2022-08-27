@@ -88,18 +88,21 @@ function demean(vect)
     return vect .- mean(vect)
 end
 ```
+
 We can test this with our random vector from part (1).
+
 ```julia
 mean(a)
 ```
+
 ```julia
 demean(a)
 ```
 
 ## Problem 3.3
 ```julia
-b = zeros(10)
-b[3:8] .= 1.0
+b = zeros(10);
+b[3:8] .= 1.0;
 b
 ```
 
@@ -111,14 +114,35 @@ A = rand(5, 5)
 for i in 1:5
     A[:, i] .-= mean(A[:, i])
 end
+
+A
 ```
 
 # Problem 4
 
 ## Problem 4.1
+```julia
+d = LogNormal(log(0.03), 0.005)
+y = rand(d, 100)
+```
 
 ## Problem 4.2
+```julia
+function P_levels(a, y, b, q, T, X0)
+    X = zeros(T)
+    X[1] = X0
+
+    for i in 2:T
+        X[i] = X[i-1] + a + y[i] + X[i-1]^q / (1+ X[i-1]^q) - b*X[i-1]
+    end
+    
+    return X
+end
+```
 
 ## Problem 4.3
+```
+plot(X, xlabel = "time (years)", ylabel="phosphorous level", legend = false)
+```
 
 # References
