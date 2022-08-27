@@ -39,8 +39,15 @@ plot(x, y, xlabel="x", ylabel="y = x^2", legend=false)
 # Problem 2
 
 ## Problem 2.1
-If $a\leq\sqrt{x},$ then $x/a \geq x/\sqrt{x} = \sqrt{x}.$ If $a > \sqrt{x},$ then $x/a < x/\sqrt{x} = \sqrt{x}.$ 
-In both cases, $a \leq \sqrt{x} \leq x/a.$
+If $a\leq\sqrt{x},$ then 
+
+$$\frac{x}{a} \geq \frac{x}{\sqrt{x}} = \sqrt{x}.$$ 
+
+If $a > \sqrt{x},$ then 
+
+$$\frac{x}{a} < \frac{x}{\sqrt{x}} = \sqrt{x}.$$
+
+In both cases, $a \leq \sqrt{x} \leq \frac{x}{a}.$
 
 ## Problem 2.2
 ```julia
@@ -61,12 +68,50 @@ Using this method and an error tolerance of $10^{-8}$ gives $\sqrt{2}\approx$ `j
 # Problem 3
 
 ## Problem 3.1
+```julia
+a = rand(20)
+```
 
 ## Problem 3.2
+```julia
+function mean(vect)
+    sum = 0
+
+    for i in 1:length(vect)
+        sum += vect[i]
+    end
+
+    return sum/length(vect)
+end
+
+function demean(vect)
+    return vect .- mean(vect)
+end
+```
+We can test this with our random vector from part (1).
+```julia
+mean(a)
+```
+```julia
+demean(a)
+```
 
 ## Problem 3.3
+```julia
+b = zeros(10)
+b[3:8] .= 1.0
+b
+```
 
 ## Problem 3.4
+```julia
+A = rand(5, 5)
+```
+```julia
+for i in 1:5
+    A[:, i] .-= mean(A[:, i])
+end
+```
 
 # Problem 4
 
