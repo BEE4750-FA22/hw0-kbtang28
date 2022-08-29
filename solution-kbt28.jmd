@@ -142,6 +142,7 @@ end
 
 ## Problem 4.3
 ```
+X = P_levels(0.4, y, 0.42, 2, 100, 1)
 plot(X, xlabel = "time (years)", ylabel="phosphorous level", legend = false)
 ```
 
