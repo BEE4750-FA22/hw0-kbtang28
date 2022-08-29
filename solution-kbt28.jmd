@@ -16,6 +16,11 @@ Pkg.activate(".")
 Pkg.instantiate()
 ```
 
+```julia
+using Plots         # load Plots.jl
+using Distributions # load Distributions.jl
+```
+
 # Problem 1
 
 ## Problem 1.1
@@ -141,8 +146,17 @@ end
 ```
 
 ## Problem 4.3
+```julia
+X = P_levels(0.4, y, 0.42, 2.0, 100, 1.0)
+plot(X, xlabel = "time (years)", ylabel="phosphorous level", legend = false)
 ```
-X = P_levels(0.4, y, 0.42, 2, 100, 1)
+
+This plot shows the lake phosphorous levels approaching an asymptote, i.e., reaching a stable equilibrium, relatively rapidly.
+I found that the P levels reached this equilibrium regardless of the initial concentration $X_0.$
+For example, the P levels starting with $X_0=4.0$ are plotted below; we see that the P levels fall until we reach the equilibrium level, approximately 3.2.
+
+```julia
+X = P_levels(0.4, y, 0.42, 2, 100, 4.0)
 plot(X, xlabel = "time (years)", ylabel="phosphorous level", legend = false)
 ```
 
