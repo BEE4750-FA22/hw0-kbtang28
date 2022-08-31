@@ -14,16 +14,15 @@ weave_options:
 using Pkg
 Pkg.activate(".")
 Pkg.instantiate()
-```
 
-```julia
-using Plots         # load Plots.jl
-using Distributions # load Distributions.jl
+using Plots
+using Distributions
 ```
 
 # Problem 1
 
 ## Problem 1.1
+Here's a function to compute the square of a number:
 ```julia
 function square_number(x)
     output = x.^2
@@ -38,7 +37,7 @@ If $x = 5,$ then $x^2 =$ `j square_number(5)`.
 ```julia
 x = LinRange(-10, 10, 100)
 y = square_number(x)
-plot(x, y, xlabel="x", ylabel="y = x^2", legend=false)
+plot(x, y, xlabel="x", ylabel="y = x^2", label="y=x^2")
 ```
 
 # Problem 2
@@ -73,6 +72,7 @@ Using this method and an error tolerance of $10^{-8}$ gives $\sqrt{2}\approx$ `j
 # Problem 3
 
 ## Problem 3.1
+Here's a random vector of length 20:
 ```julia
 a = rand(20)
 ```
@@ -94,7 +94,7 @@ function demean(vect)
 end
 ```
 
-We can test this with our random vector from part (1).
+We can test these functions with our random vector from part (1).
 
 ```julia
 mean(a)
@@ -105,6 +105,7 @@ demean(a)
 ```
 
 ## Problem 3.3
+Here's a vector of 10 elements where the center 6 elements are equal to 1 and the rest are equal to 0:
 ```julia
 b = zeros(10);
 b[3:8] .= 1.0;
@@ -112,9 +113,11 @@ b
 ```
 
 ## Problem 3.4
+Here's a random 5x5 matrix:
 ```julia
 A = rand(5, 5)
 ```
+Here's that matrix after subtracting the mean of each column from that column:
 ```julia
 for i in 1:5
     A[:, i] .-= mean(A[:, i])
@@ -126,12 +129,14 @@ A
 # Problem 4
 
 ## Problem 4.1
+Here are 100 samples from a log-normal distribution with log-mean $\mu=\log(0.03)$ and standard deviation $\sigma=0.005.$
 ```julia
 d = LogNormal(log(0.03), 0.005)
 y = rand(d, 100)
 ```
 
 ## Problem 4.2
+Here's a function that simulates the lake phosphorous dynamics:
 ```julia
 function P_levels(a, y, b, q, T, X0)
     X = zeros(T)
@@ -148,16 +153,16 @@ end
 ## Problem 4.3
 ```julia
 X = P_levels(0.4, y, 0.42, 2.0, 100, 1.0)
-plot(X, xlabel = "time (years)", ylabel="phosphorous level", legend = false)
+plot(X, xlabel = "Time (years)", ylabel="P level", legend = false)
 ```
 
-This plot shows the lake phosphorous levels approaching an asymptote, i.e., reaching a stable equilibrium, relatively rapidly.
+The above plot shows the lake phosphorous levels approaching an asymptote, i.e., reaching a stable equilibrium, relatively rapidly.
 I found that the P levels reached this equilibrium regardless of the initial concentration $X_0.$
 For example, the P levels starting with $X_0=4.0$ are plotted below; we see that the P levels fall until we reach the equilibrium level, approximately 3.2.
 
 ```julia
 X = P_levels(0.4, y, 0.42, 2, 100, 4.0)
-plot(X, xlabel = "time (years)", ylabel="phosphorous level", legend = false)
+plot(X, xlabel = "Time (years)", ylabel="P level", legend = false)
 ```
 
 # References
